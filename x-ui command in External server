@@ -11,3 +11,120 @@ EU_IP:54321
 دستور پایین را هم اجرا کنید
 
 wget -N --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && bash bbr.sh
+
+
+*******************************
+V1.6.4
+
+Commands:
+
+#1 - Install firewall
+
+sudo apt update
+sudo apt install ufw -y
+sudo ufw status
+____________________________________________________________________________________________________________________________________________________________________________
+
+#2 - Open required ports and enable firewall
+
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow 7890/tcp
+
+sudo ufw enable
+sudo ufw status
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+#3 - Run the script to install x-ui
+
+bash <(curl -Ls https://raw.githubusercontent.com/hossinasaadi/x-ui/dev/install.sh)
+
+#3.1 - modify/add the follwoing block code in xRay configuration from panel
+
+"log": {
+"access": "/usr/local/x-ui/bin/access.log",
+"loglevel": "info"
+},
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+#4 - Install Certbot
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get install certbot
+
+#4.1 - if go the foolowing error run the command to fix repo issue:
+Error:
+# Reading package lists... Done
+# E: The repository 'https://ppa.launchpadcontent.net/certbot/certbot/ubuntu jammy Release' does not have a Release file.
+# N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+# N: See apt-secure(8) manpage for repository creation and user configuration details.
+
+
+# command to fix the above issue:
+
+sudo apt-add-repository -r ppa:certbot/certbot
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+#5 - Get a free SSL for your domain
+sudo certbot certonly --standalone --preferred-challenges http --agree-tos --email your_email_address -d test.example.com
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+#6 - In case you want to renew your SSL run the following command:
+
+certbot renew --force-renewal
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+#7 - Extra Commands and Notes:
+if you want to install Google BBR:
+
+x-ui
+
+# then choose number (---15---) and press Enter to install it #
+
+____________________________________________________________________________________________________________________________________________________________________________
+
+------------------------------------
+Installing v2ray to Your Devices
+------------------------------------
+v2ray apps for Android:
+
+v2RayNG
+Clash for Android
+NapsternetV
+
+------------------------------------
+v2ray apps for iOS:
+
+ShadowRocket
+Kitsunebi
+Quantumult
+i2Ray
+Pepi
+91VPN
+Pharos Pro
+FairVPN
+
+------------------------------------
+v2ray clients for Windows:
+
+V2RayW
+V2RayN
+V2RayS
+Clash
+Qv2ray
+Netch
+
+------------------------------------
+v2ray clients for macOS:
+
+V2RayX
+V2RayU
+ClashX
+Qv2ray
